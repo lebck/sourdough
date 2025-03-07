@@ -5,7 +5,8 @@ import {
   type SourDough,
 } from "~/SourDoughCalculator/components/Calculator/types/SourDough";
 import { useState } from "react";
-import { IngredientCard } from "~/SourDoughCalculator/components/Calculator/IngredientCard/IngredientCard.tsx";
+import { IngredientCard } from "~/SourDoughCalculator/components/Calculator/Ingredients/IngredientCard/IngredientCard.tsx";
+import { Ingredients } from "~/SourDoughCalculator/components/Calculator/Ingredients/Ingredients.tsx";
 
 const emptyForm: SourDough = {
   amountDoughGrams: 0,
@@ -26,20 +27,7 @@ export function Calculator() {
   return (
     <div className="max-w-[600px]">
       <Form onChange={handleDoughChange} formData={sourDough} />
-      <div className="flex mt-6">
-        <IngredientCard
-          name="Salt"
-          amount={sourDough.amountSaltGrams.toFixed(0)}
-        />
-        <IngredientCard
-          name="Water"
-          amount={sourDough.amountWaterGrams.toFixed(0)}
-        />
-        <IngredientCard
-          name="Starter"
-          amount={sourDough.amountStarterGrams.toFixed(0)}
-        />
-      </div>
+      <Ingredients sourDough={sourDough} />
     </div>
   );
 }
