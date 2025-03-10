@@ -7,7 +7,7 @@ export const manifest = {
   theme_color: "#ffcd58",
   icons: [
     {
-      src: "/icon.png",
+      src: "/sourdough/icon.png",
       sizes: "800x800",
       type: "image/png",
     },

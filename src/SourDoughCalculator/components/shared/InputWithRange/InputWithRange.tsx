@@ -1,20 +1,21 @@
 import {
-  useFormContext,
-  type RegisterOptions,
   type FieldValues,
   type Path,
   PathValue,
+  type RegisterOptions,
+  useFormContext,
 } from "react-hook-form";
 import { ChangeEvent } from "react";
+import { Range } from "~/SourDoughCalculator/components/shared/Range/Range.tsx";
 
 type InputWithRangeProps<FormValues extends FieldValues> = {
   label: string;
   name: Path<FormValues>;
   validationRules?: RegisterOptions<FormValues, Path<FormValues>>;
   rangeOptions?: {
-    min?: number;
-    max?: number;
-    step?: number;
+    min: number;
+    max: number;
+    step: number;
   };
 };
 
@@ -43,16 +44,7 @@ const InputWithRange = <FormValues extends FieldValues>({
           {...register(name, validationRules)}
           onChange={handleChange}
         />
-        <input
-          min={rangeOptions?.min}
-          max={rangeOptions?.max}
-          step={rangeOptions?.step}
-          type="range"
-          className="range block w-full"
-          id={name}
-          {...register(name, validationRules)}
-          onChange={handleChange}
-        />
+        {rangeOptions && <Range {...rangeOptions} name={name} />}
       </div>
     </div>
   );

@@ -5,7 +5,6 @@ import {
   type SourDough,
 } from "~/SourDoughCalculator/components/Calculator/types/SourDough";
 import { useState } from "react";
-import { IngredientCard } from "~/SourDoughCalculator/components/Calculator/Ingredients/IngredientCard/IngredientCard.tsx";
 import { Ingredients } from "~/SourDoughCalculator/components/Calculator/Ingredients/Ingredients.tsx";
 
 const emptyForm: SourDough = {

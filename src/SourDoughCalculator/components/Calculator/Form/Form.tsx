@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import type { BaseParams } from "~/SourDoughCalculator/components/Calculator/types/SourDough";
 import { FormProvider, useForm } from "react-hook-form";
-import InputWithRange from "~/SourDoughCalculator/components/shared/Input/InputWithRange.tsx";
+import InputWithRange from "~/SourDoughCalculator/components/shared/InputWithRange/InputWithRange.tsx";
 
 interface FormProps {
   onChange: (data: BaseParams) => void;
@@ -11,7 +11,6 @@ interface FormProps {
 export function Form({ onChange, formData }: FormProps) {
   const handleChange = useCallback(
     (data: BaseParams) => {
-      console.log(data);
       onChange(data);
     },
     [onChange],
