@@ -2,7 +2,7 @@ import { ManifestOptions } from "vite-plugin-pwa";
 
 export const manifest = {
   name: "Sour Dough Calculator",
-  short_name: "SourDoughCalculator",
+  short_name: "Udo Calculator",
   description: "Calculate your sour dough recipe",
   theme_color: "#ffcd58",
   icons: [
