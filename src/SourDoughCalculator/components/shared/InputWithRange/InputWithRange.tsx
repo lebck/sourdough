@@ -36,7 +36,7 @@ const InputWithRange = <FormValues extends FieldValues>({
       <label className="label" htmlFor={name}>
         {label}:
       </label>
-      <div className="flex flex-col sm:flex-row gap-5 items-center">
+      <div className="flex flex-col items-center gap-5 sm:flex-row">
         <input
           type="number"
           className="input block w-20 self-start"

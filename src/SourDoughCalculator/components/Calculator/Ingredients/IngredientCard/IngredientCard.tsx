@@ -12,9 +12,9 @@ export const IngredientCard: FC<IngredientCardProps> = ({
   unit = "g",
 }) => {
   return (
-    <div className="card card-border w-40 h-40 items-center text-center">
+    <div className="card card-border h-40 w-40 items-center text-center">
       <h2 className="card-title mt-3">{name}</h2>
-      <div className="card-body ">
+      <div className="card-body">
         <span className="text-3xl">{amount}</span>
         <br />
         {unit}

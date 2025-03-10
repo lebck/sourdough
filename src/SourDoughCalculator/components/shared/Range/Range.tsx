@@ -43,7 +43,7 @@ export const Range = <FormValues extends FieldValues>({
         {...register(name)}
         onChange={handleChange}
       />
-      <div className="flex justify-between -mx-2.5 mt-2 text-xs cursor-pointer">
+      <div className="-mx-2.5 mt-2 flex cursor-pointer justify-between text-xs">
         {range.map((value) => (
           <div
             key={value}

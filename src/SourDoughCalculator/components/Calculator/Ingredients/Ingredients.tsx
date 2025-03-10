@@ -8,7 +8,7 @@ interface IngredientsProps {
 
 export const Ingredients: FC<IngredientsProps> = ({ sourDough }) => {
   return (
-    <div className="flex mt-6 justify-between">
+    <div className="mt-6 flex justify-between">
       <IngredientCard
         name="Salt"
         amount={sourDough.amountSaltGrams.toFixed(0)}
