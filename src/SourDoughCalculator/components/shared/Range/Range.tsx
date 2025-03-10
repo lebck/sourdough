@@ -35,7 +35,7 @@ export const Range = <FormValues extends FieldValues>({
   return (
     <div className="w-full">
       <input
-        data-testid="range"
+        data-testid={Range.testIDs.range}
         min={min}
         max={max}
         step={step}
@@ -48,6 +48,7 @@ export const Range = <FormValues extends FieldValues>({
       <div className="-mx-2.5 mt-2 flex cursor-pointer justify-between text-xs">
         {range.map((value) => (
           <div
+            data-testid={Range.testIDs.rangeItem(value)}
             key={value}
             className="flex flex-col text-center"
             style={{ width: `${100 / range.length}%` }}
@@ -64,3 +65,8 @@ export const Range = <FormValues extends FieldValues>({
 
 const typedValue = <FormValues extends FieldValues>(value: unknown) =>
   value as PathValue<FormValues, Path<FormValues>>;
+
+Range.testIDs = {
+  rangeItem: (n: number) => `rangeItem${n}`,
+  range: "range",
+};

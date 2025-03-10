@@ -19,7 +19,7 @@ const InputWithRange = <FormValues extends FieldValues>({
   rangeOptions,
 }: InputWithRangeProps<FormValues>) => {
   return (
-    <div className="mt-6">
+    <div className="mt-6" data-testid={InputWithRange.testIDs.test}>
       <Label htmlFor={name}>{label}:</Label>
       <div className="flex flex-col items-center gap-5 sm:flex-row">
         <InputNumber name={name} />
@@ -30,3 +30,7 @@ const InputWithRange = <FormValues extends FieldValues>({
 };
 
 export default InputWithRange;
+
+InputWithRange.testIDs = {
+  test: "foo",
+};

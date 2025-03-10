@@ -11,7 +11,7 @@ interface InputProps {
 }
 
 export const InputNumber: FC<InputProps> = ({ name }) => {
-  const { register, setValue } = useFormContext<FieldValues>();
+  const { register, setValue, watch } = useFormContext<FieldValues>();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(name, e.target.value as PathValue<FieldValues, Path<FieldValues>>);
@@ -19,11 +19,15 @@ export const InputNumber: FC<InputProps> = ({ name }) => {
 
   return (
     <input
+      data-testid={InputNumberTestID}
       type="number"
       className="input block w-20 self-start"
       id={name}
       {...register(name)}
+      value={watch(name)}
       onChange={handleChange}
     />
   );
 };
+
+export const InputNumberTestID = "inputNumber";
