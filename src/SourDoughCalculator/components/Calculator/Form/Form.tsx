@@ -26,7 +26,7 @@ export function Form({ onChange, formData }: FormProps) {
         <InputWithRange
           label="Amount flour (g)"
           name="amountDoughGrams"
-          rangeOptions={{ min: 0, max: 1800, step: 50 }}
+          rangeOptions={{ min: 0, max: 1500, step: 50 }}
         />
         <InputWithRange
           label="Hydration (%)"
