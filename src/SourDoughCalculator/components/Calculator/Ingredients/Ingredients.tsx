@@ -10,6 +10,10 @@ export const Ingredients: FC<IngredientsProps> = ({ sourDough }) => {
   return (
     <div className="mt-6 flex justify-between">
       <IngredientCard
+        name="Flour"
+        amount={sourDough.amountDoughGrams.toFixed(0)}
+      />
+      <IngredientCard
         name="Salt"
         amount={sourDough.amountSaltGrams.toFixed(0)}
       />

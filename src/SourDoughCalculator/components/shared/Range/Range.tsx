@@ -20,14 +20,14 @@ export const Range = <FormValues extends FieldValues>({
   max,
   step = 1,
 }: RangeProps<FormValues>) => {
-  const { register, setValue } = useFormContext<FormValues>();
+  const { watch, setValue } = useFormContext<FormValues>();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setTypedValue(e.target.value);
   };
 
-  const setTypedValue = (value: unknown) => {
-    setValue(name, typedValue<FormValues>(value));
+  const setTypedValue = (value: string) => {
+    setValue(name, typedValue<FormValues>(Number.parseInt(value)));
   };
 
   const range = useRange(min, max, step);
@@ -42,8 +42,8 @@ export const Range = <FormValues extends FieldValues>({
         type="range"
         className="range range-xs pointer-coarse:range-xl block w-full touch-pan-y"
         id={name}
-        {...register(name)}
         onChange={handleChange}
+        value={watch(name)}
       />
       <div className="-mx-2.5 mt-2 flex cursor-pointer justify-between text-xs">
         {range.map((value) => (
@@ -52,7 +52,7 @@ export const Range = <FormValues extends FieldValues>({
             key={value}
             className="flex flex-col text-center"
             style={{ width: `${100 / range.length}%` }}
-            onClick={() => setTypedValue(value)}
+            onClick={() => setTypedValue(`${value}`)}
           >
             <span>|</span>
             <span>{value}</span>

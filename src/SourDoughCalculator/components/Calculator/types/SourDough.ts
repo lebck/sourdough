@@ -12,8 +12,6 @@ export interface Amounts {
   amountSaltGrams: number;
 }
 
-export type SourDough = BaseParams & Amounts;
-
 export function calculateDough(baseParams: BaseParams): Amounts {
   const amountWaterGrams =
     baseParams.amountDoughGrams * (baseParams.hydrationPercent / 100);
