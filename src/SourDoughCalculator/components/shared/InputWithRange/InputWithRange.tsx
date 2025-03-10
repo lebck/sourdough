@@ -1,17 +1,11 @@
-import {
-  type FieldValues,
-  type Path,
-  PathValue,
-  type RegisterOptions,
-  useFormContext,
-} from "react-hook-form";
-import { ChangeEvent } from "react";
+import { type FieldValues, type Path } from "react-hook-form";
 import { Range } from "~/SourDoughCalculator/components/shared/Range/Range.tsx";
+import { Label } from "~/SourDoughCalculator/components/shared/Label/Label.tsx";
+import { InputNumber } from "~/SourDoughCalculator/components/shared/Input/InputNumber.tsx";
 
 type InputWithRangeProps<FormValues extends FieldValues> = {
   label: string;
   name: Path<FormValues>;
-  validationRules?: RegisterOptions<FormValues, Path<FormValues>>;
   rangeOptions?: {
     min: number;
     max: number;
@@ -22,28 +16,13 @@ type InputWithRangeProps<FormValues extends FieldValues> = {
 const InputWithRange = <FormValues extends FieldValues>({
   label,
   name,
-  validationRules,
   rangeOptions,
 }: InputWithRangeProps<FormValues>) => {
-  const { register, setValue } = useFormContext<FormValues>();
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(name, e.target.value as PathValue<FormValues, Path<FormValues>>);
-  };
-
   return (
     <div className="mt-6">
-      <label className="label" htmlFor={name}>
-        {label}:
-      </label>
+      <Label htmlFor={name}>{label}:</Label>
       <div className="flex flex-col items-center gap-5 sm:flex-row">
-        <input
-          type="number"
-          className="input block w-20 self-start"
-          id={name}
-          {...register(name, validationRules)}
-          onChange={handleChange}
-        />
+        <InputNumber name={name} />
         {rangeOptions && <Range {...rangeOptions} name={name} />}
       </div>
     </div>

@@ -1,4 +1,3 @@
-import { ChangeEvent } from "react";
 import {
   FieldValues,
   type Path,
@@ -6,6 +5,7 @@ import {
   useFormContext,
 } from "react-hook-form";
 import { calculateRange } from "~/SourDoughCalculator/components/shared/Range/calculateRange.ts";
+import { ChangeEvent } from "react";
 
 export interface RangeProps<FormValues extends FieldValues> {
   name: Path<FormValues>;
