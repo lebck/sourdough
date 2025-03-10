@@ -33,7 +33,7 @@ export const Range = <FormValues extends FieldValues>({
   const range = useRange(min, max, step);
 
   return (
-    <div className="w-full">
+    <div className="mt-3 w-full">
       <input
         data-testid={Range.testIDs.range}
         min={min}

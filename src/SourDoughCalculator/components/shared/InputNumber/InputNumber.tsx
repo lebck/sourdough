@@ -21,7 +21,7 @@ export const InputNumber: FC<InputProps> = ({ name }) => {
     <input
       data-testid={InputNumberTestID}
       type="number"
-      className="input block w-20 self-start"
+      className="input mt-3 block w-20 self-start"
       id={name}
       {...register(name)}
       value={watch(name)}
