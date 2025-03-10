@@ -4,7 +4,7 @@ import {
   PathValue,
   useFormContext,
 } from "react-hook-form";
-import { calculateRange } from "~/SourDoughCalculator/components/shared/Range/calculateRange.ts";
+import { useRange } from "~/SourDoughCalculator/components/shared/Range/calculateRange.ts";
 import { ChangeEvent } from "react";
 
 export interface RangeProps<FormValues extends FieldValues> {
@@ -26,14 +26,16 @@ export const Range = <FormValues extends FieldValues>({
     setTypedValue(e.target.value);
   };
 
-  const setTypedValue = (value: unknown) =>
+  const setTypedValue = (value: unknown) => {
     setValue(name, typedValue<FormValues>(value));
+  };
 
-  const range = calculateRange(min, max, step);
+  const range = useRange(min, max, step);
 
   return (
     <div className="w-full">
       <input
+        data-testid="range"
         min={min}
         max={max}
         step={step}
