@@ -1,7 +1,7 @@
 import { type FieldValues, type Path } from "react-hook-form";
 import { Range } from "~/SourDoughCalculator/components/shared/Range/Range.tsx";
 import { Label } from "~/SourDoughCalculator/components/shared/Label/Label.tsx";
-import { InputNumber } from "~/SourDoughCalculator/components/shared/Input/InputNumber.tsx";
+import { InputNumber } from "~/SourDoughCalculator/components/shared/InputNumber/InputNumber.tsx";
 
 type InputWithRangeProps<FormValues extends FieldValues> = {
   label: string;

@@ -3,7 +3,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import InputWithRange from "~/SourDoughCalculator/components/shared/InputWithRange/InputWithRange.tsx";
 import { expect, waitFor } from "@storybook/test";
 import { Range } from "~/SourDoughCalculator/components/shared/Range/Range.tsx";
-import { InputNumberTestID } from "~/SourDoughCalculator/components/shared/Input/InputNumber.tsx";
+import { InputNumberTestID } from "~/SourDoughCalculator/components/shared/InputNumber/InputNumber.tsx";
 
 const meta: Meta<typeof InputWithRange> = {
   component: InputWithRange,

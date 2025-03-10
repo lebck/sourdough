@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { FormProvider, useForm } from "react-hook-form";
 import type { BaseParams } from "~/SourDoughCalculator/components/Calculator/types/SourDough.ts";
-import { InputNumber } from "~/SourDoughCalculator/components/shared/Input/InputNumber.tsx";
+import { InputNumber } from "~/SourDoughCalculator/components/shared/InputNumber/InputNumber.tsx";
 
 const meta: Meta<typeof InputNumber> = {
   component: InputNumber,
