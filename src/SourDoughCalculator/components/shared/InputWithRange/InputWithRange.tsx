@@ -11,6 +11,7 @@ type InputWithRangeProps<FormValues extends FieldValues> = {
     max: number;
     step: number;
   };
+  defaultValue?: number;
 };
 
 const InputWithRange = <FormValues extends FieldValues>({

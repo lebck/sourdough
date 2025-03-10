@@ -1,9 +1,9 @@
-import { SourDough } from "~/SourDoughCalculator/components/Calculator/types/SourDough.ts";
+import { Amounts } from "~/SourDoughCalculator/components/Calculator/types/SourDough.ts";
 import { IngredientCard } from "~/SourDoughCalculator/components/Calculator/Ingredients/IngredientCard/IngredientCard.tsx";
 import { FC } from "react";
 
 interface IngredientsProps {
-  sourDough: SourDough;
+  sourDough: Amounts;
 }
 
 export const Ingredients: FC<IngredientsProps> = ({ sourDough }) => {

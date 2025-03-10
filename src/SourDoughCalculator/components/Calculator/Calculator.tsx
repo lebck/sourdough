@@ -1,22 +1,23 @@
 import { Form } from "~/SourDoughCalculator/components/Calculator/Form/Form";
 import {
+  Amounts,
   BaseParams,
   calculateDough,
-  type SourDough,
 } from "~/SourDoughCalculator/components/Calculator/types/SourDough";
 import { useState } from "react";
 import { Ingredients } from "~/SourDoughCalculator/components/Calculator/Ingredients/Ingredients.tsx";
 
-const emptyForm: SourDough = {
-  amountDoughGrams: 0,
-  hydrationPercent: 0,
-  amountWaterGrams: 0,
-  amountStarterGrams: 0,
-  amountSaltGrams: 0,
+const initialForm: BaseParams = {
+  amountDoughGrams: 500,
+  hydrationPercent: 60,
+  amountSaltPercent: 2,
+  amountStarterPercent: 20,
 };
 
 export function Calculator() {
-  const [sourDough, setSourDough] = useState<SourDough>(emptyForm);
+  const [sourDough, setSourDough] = useState<Amounts>(
+    calculateDough(initialForm),
+  );
 
   const handleDoughChange = (dough: BaseParams) => {
     const calculatedSourDough = calculateDough(dough);
@@ -24,9 +25,9 @@ export function Calculator() {
   };
 
   return (
-    <div className="max-w-[600px]">
-      <Form onChange={handleDoughChange} formData={sourDough} />
+    <>
+      <Form onChange={handleDoughChange} formData={initialForm} />
       <Ingredients sourDough={sourDough} />
-    </div>
+    </>
   );
 }

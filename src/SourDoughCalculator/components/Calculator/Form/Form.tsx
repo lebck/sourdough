@@ -2,6 +2,7 @@ import { useCallback } from "react";
 import type { BaseParams } from "~/SourDoughCalculator/components/Calculator/types/SourDough";
 import { FormProvider, useForm } from "react-hook-form";
 import InputWithRange from "~/SourDoughCalculator/components/shared/InputWithRange/InputWithRange.tsx";
+import { Collapse } from "~/SourDoughCalculator/components/shared/Collapse/Collapse.tsx";
 
 interface FormProps {
   onChange: (data: BaseParams) => void;
@@ -33,6 +34,18 @@ export function Form({ onChange, formData }: FormProps) {
           name="hydrationPercent"
           rangeOptions={{ min: 0, max: 100, step: 5 }}
         />
+        <Collapse title="Advanced">
+          <InputWithRange
+            label="Amount salt (%)"
+            name="amountSaltPercent"
+            rangeOptions={{ min: 0, max: 10, step: 0.5 }}
+          />
+          <InputWithRange
+            label="Amount starter (%)"
+            name="amountStarterPercent"
+            rangeOptions={{ min: 0, max: 100, step: 5 }}
+          />
+        </Collapse>
       </form>
     </FormProvider>
   );

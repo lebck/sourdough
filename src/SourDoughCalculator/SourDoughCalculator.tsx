@@ -3,7 +3,7 @@ import { Headline } from "~/SourDoughCalculator/components/shared/Headline/Headl
 
 export function SourDoughCalculator() {
   return (
-    <div className="p-6">
+    <div className="max-w-[600px] p-6">
       <Headline>Udo Calculator</Headline>
       <Calculator />
     </div>
