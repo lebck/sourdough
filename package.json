@@ -33,6 +33,7 @@
     "globals": "^15.15.0",
     "i18next": "^24.2.2",
     "i18next-browser-languagedetector": "^8.0.4",
+    "jotai": "^2.12.2",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "react": "^19.0.0",
