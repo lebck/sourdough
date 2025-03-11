@@ -1,0 +1,16 @@
+{
+  "translation": {
+    "headline": "Sourdough Calculator",
+    "doughForm": {
+      "amountFlourGrams": "Amount flour (g)",
+      "hydrationPercent": "Hydration (%)",
+      "amountSaltPercent": "Amount Salt (%)",
+      "amountStarterPercent": "Amount starter (%)",
+      "advanced": "Advanced"
+    },
+    "flour": "Flour",
+    "salt": "Salt",
+    "water": "Water",
+    "starter": "Starter"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "translation": {
+    "headline": "Udo Rechner",
+    "doughForm": {
+      "amountFlourGrams": "Mehlmenge (g)",
+      "hydrationPercent": "Hydration (%)",
+      "amountSaltPercent": "Salzmenge (%)",
+      "amountStarterPercent": "Starter (%)",
+      "advanced": "Erweitert"
+    },
+    "flour": "Mehl",
+    "salt": "Salz",
+    "water": "Wasser",
+    "starter": "Starter"
+  }
+}
