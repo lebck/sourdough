@@ -1,11 +1,10 @@
 import { FC } from "react";
-import { useTranslation } from "react-i18next";
 import { useSourDoughState } from "~/SourDoughCalculator/services/SourdoughState.ts";
 import { SourdoughStore } from "~/SourDoughCalculator/services/SourdoughStore.ts";
+import SaveIcon from "~/assets/save.svg?react";
 
 export const SaveDough: FC = () => {
   const { baseParams, setClean } = useSourDoughState();
-  const { t } = useTranslation();
 
   const handleClick = () => {
     SourdoughStore.set(baseParams);
@@ -13,10 +12,11 @@ export const SaveDough: FC = () => {
   };
 
   return (
-    <div className="mt-6">
-      <button onClick={handleClick} className="btn btn-primary">
-        {t("save")}
-      </button>
-    </div>
+    <button
+      onClick={handleClick}
+      className="btn btn-circle fixed right-4 bottom-4"
+    >
+      <SaveIcon />
+    </button>
   );
 };

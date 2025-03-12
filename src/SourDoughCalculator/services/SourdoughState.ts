@@ -1,6 +1,5 @@
-import { atom } from "jotai";
+import { atom, useAtom } from "jotai";
 import { SourdoughStore } from "~/SourDoughCalculator/services/SourdoughStore.ts";
-import { useAtom } from "jotai";
 import { BaseParams } from "~/SourDoughCalculator/components/Calculator/types/SourDough.ts";
 
 const baseParams$ = atom(SourdoughStore.get());

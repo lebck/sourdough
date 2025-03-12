@@ -24,7 +24,7 @@ export function Calculator() {
 
   return (
     <>
-      <Form onChange={handleDoughChange} formData={baseParams} />
+      <Form onChange={handleDoughChange} value={baseParams} />
       <Ingredients sourDough={sourDough} />
       {dirty && <SaveDough />}
     </>

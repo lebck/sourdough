@@ -7,10 +7,10 @@ import { useTranslation } from "react-i18next";
 
 interface FormProps {
   onChange: (data: BaseParams) => void;
-  formData: BaseParams;
+  value: BaseParams;
 }
 
-export function Form({ onChange, formData }: FormProps) {
+export function Form({ onChange, value }: FormProps) {
   const handleChange = useCallback(
     (data: BaseParams) => {
       onChange(data);
@@ -19,7 +19,7 @@ export function Form({ onChange, formData }: FormProps) {
   );
 
   const methods = useForm<BaseParams>({
-    values: formData,
+    values: value,
   });
 
   const { t } = useTranslation();
