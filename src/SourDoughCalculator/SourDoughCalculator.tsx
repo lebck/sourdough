@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 export function SourDoughCalculator() {
   const { t } = useTranslation();
   return (
-    <div className="max-w-[600px] p-6">
+    <div className="m-auto max-w-[600px] p-6">
       <Headline>{t("headline")}</Headline>
       <Calculator />
     </div>
