@@ -17,14 +17,16 @@ export const InputNumber: FC<InputProps> = ({ name }) => {
     setValue(name, e.target.value as PathValue<FieldValues, Path<FieldValues>>);
   };
 
+  const inputProps = register(name, { valueAsNumber: true });
+
   return (
     <input
+      {...inputProps}
       data-testid={InputNumberTestID}
       type="number"
       className="input mt-3 block w-20 self-start"
       id={name}
-      {...register(name)}
-      value={watch(name)}
+      value={watch(name) ?? ""}
       onChange={handleChange}
     />
   );
