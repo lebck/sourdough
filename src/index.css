@@ -6,3 +6,7 @@
         @slot;
     }
 }
+
+html {
+    scrollbar-gutter: stable;
+}

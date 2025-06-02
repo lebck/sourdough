@@ -10,7 +10,7 @@ interface IngredientsProps {
 export const Ingredients: FC<IngredientsProps> = ({ sourDough }) => {
   const { t } = useTranslation();
   return (
-    <div className="mt-6 flex h-full flex-wrap justify-between">
+    <div className="mt-6 flex h-full flex-wrap justify-between gap-4">
       <IngredientCard
         name={t("flour")}
         amount={sourDough.amountDoughGrams.toFixed(0)}

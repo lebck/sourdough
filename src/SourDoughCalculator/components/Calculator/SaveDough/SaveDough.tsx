@@ -1,9 +1,12 @@
-import { FC } from "react";
 import { useSourDoughStorage } from "~/SourDoughCalculator/services/SourdoughState.ts";
 import { SourdoughStore } from "~/SourDoughCalculator/services/SourdoughStore.ts";
 import SaveIcon from "~/assets/save.svg?react";
 
-export const SaveDough: FC = () => {
+interface SaveDoughProps {
+  enabled: boolean;
+}
+
+export const SaveDough = ({ enabled }: SaveDoughProps) => {
   const { baseParams, setClean } = useSourDoughStorage();
 
   const handleClick = () => {
@@ -14,9 +17,11 @@ export const SaveDough: FC = () => {
   return (
     <button
       onClick={handleClick}
-      className="btn btn-circle fixed right-4 bottom-4"
+      disabled={!enabled}
+      className="btn btn-outline mt-6 w-full px-6"
     >
       <SaveIcon />
+      Save amounts
     </button>
   );
 };
