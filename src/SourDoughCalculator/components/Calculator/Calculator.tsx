@@ -16,10 +16,11 @@ export function Calculator() {
     calculateDough(baseParams),
   );
 
-  const handleDoughChange = (dough: BaseParams) => {
-    setBaseParams(dough);
-    const calculatedSourDough = calculateDough(dough);
-    setSourDough({ ...dough, ...calculatedSourDough });
+  const handleDoughChange = (baseParams: BaseParams) => {
+    setBaseParams(baseParams);
+
+    baseParams = correctBaseParams(baseParams);
+    setSourDough(calculateDough(baseParams));
   };
 
   return (
@@ -29,4 +30,22 @@ export function Calculator() {
       {dirty && <SaveDough />}
     </>
   );
+}
+
+function correctBaseParams(baseParams: BaseParams): BaseParams {
+  if (
+    isNaN(baseParams.amountDoughGrams) ||
+    isNaN(baseParams.hydrationPercent) ||
+    isNaN(baseParams.amountStarterPercent) ||
+    isNaN(baseParams.amountSaltPercent)
+  ) {
+    return {
+      amountDoughGrams: 0,
+      hydrationPercent: 0,
+      amountStarterPercent: 0,
+      amountSaltPercent: 0,
+    };
+  }
+
+  return baseParams;
 }

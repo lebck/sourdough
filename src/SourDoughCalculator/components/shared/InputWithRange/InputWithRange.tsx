@@ -11,20 +11,30 @@ type InputWithRangeProps<FormValues extends FieldValues> = {
     max: number;
     step: number;
   };
-  defaultValue?: number;
+  value: number;
+  onChange: (value: number) => void;
 };
 
 const InputWithRange = <FormValues extends FieldValues>({
   label,
   name,
   rangeOptions,
+  value,
+  onChange,
 }: InputWithRangeProps<FormValues>) => {
   return (
     <div className="mt-6" data-testid={InputWithRange.testIDs.test}>
       <Label htmlFor={name}>{label}:</Label>
       <div className="flex flex-col items-center gap-5 sm:flex-row">
-        <InputNumber name={name} />
-        {rangeOptions && <Range {...rangeOptions} name={name} />}
+        <InputNumber name={name} onChange={onChange} value={value} />
+        {rangeOptions && (
+          <Range
+            onChange={onChange}
+            value={value}
+            {...rangeOptions}
+            name={name}
+          />
+        )}
       </div>
     </div>
   );

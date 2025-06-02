@@ -1,33 +1,29 @@
-import {
-  FieldValues,
-  type Path,
-  PathValue,
-  useFormContext,
-} from "react-hook-form";
 import { useRange } from "~/SourDoughCalculator/components/shared/Range/calculateRange.ts";
 import { ChangeEvent } from "react";
 
-export interface RangeProps<FormValues extends FieldValues> {
-  name: Path<FormValues>;
+export interface RangeProps {
+  name: string;
   min: number;
   max: number;
   step?: number;
+  value: number;
+  onChange: (value: number) => void;
 }
 
-export const Range = <FormValues extends FieldValues>({
+export const Range = ({
+  onChange,
   name,
+  value,
   min,
   max,
   step = 1,
-}: RangeProps<FormValues>) => {
-  const { watch, setValue } = useFormContext<FormValues>();
-
+}: RangeProps) => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setTypedValue(e.target.value);
   };
 
   const setTypedValue = (value: string) => {
-    setValue(name, typedValue<FormValues>(Number.parseInt(value)));
+    onChange(Number.parseInt(value));
   };
 
   const range = useRange(min, max, step);
@@ -43,28 +39,25 @@ export const Range = <FormValues extends FieldValues>({
         className="range range-xs pointer-coarse:range-xl block w-full touch-pan-y"
         id={name}
         onChange={handleChange}
-        value={watch(name)}
+        value={value}
       />
       <div className="-mx-2.5 mt-2 flex cursor-pointer justify-between text-xs">
-        {range.map((value) => (
+        {range.map((step) => (
           <div
-            data-testid={Range.testIDs.rangeItem(value)}
-            key={value}
+            data-testid={Range.testIDs.rangeItem(step)}
+            key={step}
             className="flex flex-col text-center"
             style={{ width: `${100 / range.length}%` }}
-            onClick={() => setTypedValue(`${value}`)}
+            onClick={() => setTypedValue(`${step}`)}
           >
             <span>|</span>
-            <span>{value}</span>
+            <span>{step}</span>
           </div>
         ))}
       </div>
     </div>
   );
 };
-
-const typedValue = <FormValues extends FieldValues>(value: unknown) =>
-  value as PathValue<FormValues, Path<FormValues>>;
 
 Range.testIDs = {
   rangeItem: (n: number) => `rangeItem${n}`,

@@ -20,13 +20,6 @@ export function calculateDough(baseParams: BaseParams): Amounts {
   const amountSaltGrams =
     baseParams.amountDoughGrams * (baseParams.amountSaltPercent / 100);
 
-  console.log({
-    amountDoughGrams: baseParams.amountDoughGrams,
-    amountWaterGrams,
-    amountStarterGrams,
-    amountSaltGrams,
-  });
-
   return {
     amountDoughGrams: baseParams.amountDoughGrams,
     amountWaterGrams,
