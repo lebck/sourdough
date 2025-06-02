@@ -5,11 +5,11 @@ import { BaseParams } from "~/SourDoughCalculator/components/Calculator/types/So
 const baseParams$ = atom(SourdoughStore.get());
 const dirty$ = atom(false);
 
-export const useSourDoughState = () => {
+export const useSourDoughStorage = () => {
   const [dirty, setDirty] = useAtom(dirty$);
   const [baseParams, setBaseParams] = useAtom(baseParams$);
 
-  const setBaseParamsAndDirty = (data: BaseParams) => {
+  const updateBaseParams = (data: BaseParams) => {
     setBaseParams(data);
     setDirty(true);
   };
@@ -17,7 +17,7 @@ export const useSourDoughState = () => {
   return {
     baseParams,
     dirty,
-    setBaseParams: setBaseParamsAndDirty,
+    setBaseParams: updateBaseParams,
     setClean: () => setDirty(false),
   };
 };

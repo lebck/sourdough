@@ -6,11 +6,11 @@ import {
 } from "~/SourDoughCalculator/components/Calculator/types/SourDough";
 import { useState } from "react";
 import { Ingredients } from "~/SourDoughCalculator/components/Calculator/Ingredients/Ingredients.tsx";
-import { useSourDoughState } from "~/SourDoughCalculator/services/SourdoughState.ts";
+import { useSourDoughStorage } from "~/SourDoughCalculator/services/SourdoughState.ts";
 import { SaveDough } from "~/SourDoughCalculator/components/Calculator/SaveDough/SaveDough.tsx";
 
 export function Calculator() {
-  const { baseParams, setBaseParams, dirty } = useSourDoughState();
+  const { baseParams, setBaseParams, dirty } = useSourDoughStorage();
 
   const [sourDough, setSourDough] = useState<Amounts>(
     calculateDough(baseParams),

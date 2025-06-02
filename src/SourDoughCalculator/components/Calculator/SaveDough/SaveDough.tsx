@@ -1,10 +1,10 @@
 import { FC } from "react";
-import { useSourDoughState } from "~/SourDoughCalculator/services/SourdoughState.ts";
+import { useSourDoughStorage } from "~/SourDoughCalculator/services/SourdoughState.ts";
 import { SourdoughStore } from "~/SourDoughCalculator/services/SourdoughStore.ts";
 import SaveIcon from "~/assets/save.svg?react";
 
 export const SaveDough: FC = () => {
-  const { baseParams, setClean } = useSourDoughState();
+  const { baseParams, setClean } = useSourDoughStorage();
 
   const handleClick = () => {
     SourdoughStore.set(baseParams);
