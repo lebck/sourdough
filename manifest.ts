@@ -4,7 +4,7 @@ export const manifest = {
   name: "Sour Dough Calculator",
   short_name: "Udo Calculator",
   description: "Calculate your sour dough recipe",
-  theme_color: "#ffcd58",
+  theme_color: "#882c00",
   icons: [
     {
       src: "/sourdough/icon.png",

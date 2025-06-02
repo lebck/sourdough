@@ -9,11 +9,16 @@ interface FormProps {
   value: BaseParams;
 }
 
-const useForm = (defaultValues: BaseParams) => {
+const useForm = (
+  defaultValues: BaseParams,
+  onChange: (params: BaseParams) => void,
+) => {
   const [values, setValues] = useState(defaultValues);
 
   const updateBaseParam = (key: keyof BaseParams, value: number) => {
-    setValues({ ...values, [key]: value });
+    const newValues = { ...values, [key]: value };
+    setValues(newValues);
+    onChange(newValues);
   };
 
   const handlers = {
@@ -36,10 +41,10 @@ const useForm = (defaultValues: BaseParams) => {
 export function Form({ onChange, value }: FormProps) {
   const { t } = useTranslation();
 
-  const form = useForm(value);
+  const form = useForm(value, onChange);
 
   return (
-    <form onChange={() => onChange(form.values)} className="mt-6">
+    <form className="mt-6">
       <InputWithRange
         label={t("doughForm.amountFlourGrams")}
         name="amountDoughGrams"
