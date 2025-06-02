@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { FormProvider, useForm } from "react-hook-form";
 import InputWithRange from "~/SourDoughCalculator/components/shared/InputWithRange/InputWithRange.tsx";
 import { expect, waitFor } from "@storybook/test";
 import { Range } from "~/SourDoughCalculator/components/shared/Range/Range.tsx";
@@ -7,17 +6,6 @@ import { InputNumberTestID } from "~/SourDoughCalculator/components/shared/Input
 
 const meta: Meta<typeof InputWithRange> = {
   component: InputWithRange,
-  decorators: [
-    (Story) => {
-      const methods = useForm<{ test: number }>({ defaultValues: { test: 0 } });
-
-      return (
-        <FormProvider {...methods}>
-          <Story />
-        </FormProvider>
-      );
-    },
-  ],
 };
 
 export default meta;
@@ -32,11 +20,9 @@ export const Default: Story = {
       max: 100,
       step: 5,
     },
+    onChange: () => {},
   },
   play: async ({ canvas, step }) => {
-    // step("Click on the range", async () => {
-    //   canvas.getByTestId(Range.testIDs.range).click();
-    // });
     step("Click on the range item", async () => {
       canvas.getByTestId(Range.testIDs.rangeItem(20)).click();
 

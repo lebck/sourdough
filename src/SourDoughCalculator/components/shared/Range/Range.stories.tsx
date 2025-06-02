@@ -1,23 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { FormProvider, useForm } from "react-hook-form";
 import { Range } from "~/SourDoughCalculator/components/shared/Range/Range";
 import { expect, within } from "@storybook/test";
 
 const meta: Meta<typeof Range> = {
   component: Range,
-  decorators: [
-    (Story) => {
-      const methods = useForm<{ test: number }>({ defaultValues: { test: 0 } });
-      const value = methods.watch("test");
-
-      return (
-        <FormProvider {...methods}>
-          <Story />
-          <pre className="mt-5">Value: {value ?? "undefined"}</pre>
-        </FormProvider>
-      );
-    },
-  ],
 };
 
 export default meta;

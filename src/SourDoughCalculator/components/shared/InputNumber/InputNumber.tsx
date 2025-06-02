@@ -1,4 +1,4 @@
-import { ChangeEvent, FC } from "react";
+import { ChangeEvent, FC, useMemo } from "react";
 
 interface InputProps {
   name: string;
@@ -17,10 +17,17 @@ export const InputNumber: FC<InputProps> = ({ name, onChange, value }) => {
       type="number"
       className="input mt-3 block w-20 self-start"
       id={name}
-      value={value}
+      value={useParsedValue(value)}
       onChange={handleChange}
     />
   );
+};
+
+const useParsedValue = (value: number) => {
+  return useMemo(() => {
+    if (isNaN(value)) return "";
+    return value;
+  }, [value]);
 };
 
 export const InputNumberTestID = "inputNumber";

@@ -1,5 +1,5 @@
 import { useRange } from "~/SourDoughCalculator/components/shared/Range/calculateRange.ts";
-import { ChangeEvent } from "react";
+import { ChangeEvent, useMemo } from "react";
 
 export interface RangeProps {
   name: string;
@@ -39,7 +39,7 @@ export const Range = ({
         className="range range-xs pointer-coarse:range-xl block w-full touch-pan-y"
         id={name}
         onChange={handleChange}
-        value={value}
+        value={useParsedValue(value)}
       />
       <div className="-mx-2.5 mt-2 flex cursor-pointer justify-between text-xs">
         {range.map((step) => (
@@ -57,6 +57,13 @@ export const Range = ({
       </div>
     </div>
   );
+};
+
+const useParsedValue = (value: number) => {
+  return useMemo(() => {
+    if (isNaN(value)) return 0;
+    return value;
+  }, [value]);
 };
 
 Range.testIDs = {

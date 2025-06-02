@@ -1,11 +1,10 @@
-import { type FieldValues, type Path } from "react-hook-form";
 import { Range } from "~/SourDoughCalculator/components/shared/Range/Range.tsx";
 import { Label } from "~/SourDoughCalculator/components/shared/Label/Label.tsx";
 import { InputNumber } from "~/SourDoughCalculator/components/shared/InputNumber/InputNumber.tsx";
 
-type InputWithRangeProps<FormValues extends FieldValues> = {
+type InputWithRangeProps = {
   label: string;
-  name: Path<FormValues>;
+  name: string;
   rangeOptions?: {
     min: number;
     max: number;
@@ -15,13 +14,13 @@ type InputWithRangeProps<FormValues extends FieldValues> = {
   onChange: (value: number) => void;
 };
 
-const InputWithRange = <FormValues extends FieldValues>({
+const InputWithRange = ({
   label,
   name,
   rangeOptions,
   value,
   onChange,
-}: InputWithRangeProps<FormValues>) => {
+}: InputWithRangeProps) => {
   return (
     <div className="mt-6" data-testid={InputWithRange.testIDs.test}>
       <Label htmlFor={name}>{label}:</Label>
