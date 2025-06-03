@@ -21,20 +21,17 @@ const useForm = (
     onChange(newValues);
   };
 
-  const handlers = {
-    amountDoughGrams: (value: number) =>
-      updateBaseParam("amountDoughGrams", value),
-    hydrationPercent: (value: number) =>
-      updateBaseParam("hydrationPercent", value),
-    amountSaltPercent: (value: number) =>
-      updateBaseParam("amountSaltPercent", value),
-    amountStarterPercent: (value: number) =>
-      updateBaseParam("amountStarterPercent", value),
-  };
+  const createFieldHandler = (fieldName: keyof BaseParams) => ({
+    name: fieldName,
+    value: values[fieldName],
+    onChange: (value: number) => updateBaseParam(fieldName, value),
+  });
 
   return {
-    handlers,
-    values: values,
+    amountDoughGrams: createFieldHandler("amountDoughGrams"),
+    hydrationPercent: createFieldHandler("hydrationPercent"),
+    amountSaltPercent: createFieldHandler("amountSaltPercent"),
+    amountStarterPercent: createFieldHandler("amountStarterPercent"),
   };
 };
 
@@ -47,32 +44,24 @@ export function Form({ onChange, value }: FormProps) {
     <form className="mt-6">
       <InputWithRange
         label={t("doughForm.amountFlourGrams")}
-        name="amountDoughGrams"
         rangeOptions={{ min: 0, max: 1500, step: 50 }}
-        value={form.values.amountDoughGrams}
-        onChange={form.handlers.amountDoughGrams}
+        {...form.amountDoughGrams}
       />
       <InputWithRange
         label={t("doughForm.hydrationPercent")}
-        name="hydrationPercent"
         rangeOptions={{ min: 0, max: 100, step: 5 }}
-        value={form.values.hydrationPercent}
-        onChange={form.handlers.hydrationPercent}
+        {...form.hydrationPercent}
       />
       <Collapse title={t("doughForm.advanced")}>
         <InputWithRange
           label={t("doughForm.amountSaltPercent")}
-          name="amountSaltPercent"
           rangeOptions={{ min: 0, max: 10, step: 0.5 }}
-          value={form.values.amountSaltPercent}
-          onChange={form.handlers.amountSaltPercent}
+          {...form.amountSaltPercent}
         />
         <InputWithRange
           label={t("doughForm.amountStarterPercent")}
-          name="amountStarterPercent"
           rangeOptions={{ min: 0, max: 100, step: 5 }}
-          value={form.values.amountStarterPercent}
-          onChange={form.handlers.amountStarterPercent}
+          {...form.amountStarterPercent}
         />
       </Collapse>
     </form>
