@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import InputWithRange from "~/SourDoughCalculator/components/shared/InputWithRange/InputWithRange.tsx";
+import { InputWithRange } from "~/SourDoughCalculator/components/shared/InputWithRange/InputWithRange.tsx";
 import { expect, waitFor } from "@storybook/test";
 import { Range } from "~/SourDoughCalculator/components/shared/Range/Range.tsx";
 import { InputNumberTestID } from "~/SourDoughCalculator/components/shared/InputNumber/InputNumber.tsx";

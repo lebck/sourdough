@@ -1,4 +1,5 @@
 import { BaseParams } from "~/SourDoughCalculator/components/Calculator/types/SourDough.ts";
+
 const defaultData: BaseParams = {
   amountDoughGrams: 500,
   hydrationPercent: 60,
@@ -6,15 +7,18 @@ const defaultData: BaseParams = {
   amountStarterPercent: 20,
 };
 
-export const SourdoughStore = {
-  get: (): BaseParams => {
-    const data = window.localStorage.getItem("sourDoughCalculator");
+export class SourdoughStore {
+  constructor(private localStorage: Storage) {}
+
+  get(): BaseParams {
+    const data = this.localStorage.getItem("sourDoughCalculator");
     if (data) {
       return JSON.parse(data);
     }
     return defaultData;
-  },
-  set: (data: BaseParams) => {
-    window.localStorage.setItem("sourDoughCalculator", JSON.stringify(data));
-  },
-};
+  }
+
+  set(data: BaseParams) {
+    this.localStorage.setItem("sourDoughCalculator", JSON.stringify(data));
+  }
+}

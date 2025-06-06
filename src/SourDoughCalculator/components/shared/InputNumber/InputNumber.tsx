@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useMemo } from "react";
+import { ChangeEvent, FC, useCallback, useMemo } from "react";
 
 interface InputProps {
   name: string;
@@ -7,9 +7,12 @@ interface InputProps {
 }
 
 export const InputNumber: FC<InputProps> = ({ name, onChange, value }) => {
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    onChange(parseInt(event.target.value));
-  };
+  const handleChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      onChange(parseInt(event.target.value));
+    },
+    [onChange],
+  );
 
   return (
     <input

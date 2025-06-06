@@ -1,5 +1,5 @@
 import { useRange } from "~/SourDoughCalculator/components/shared/Range/calculateRange.ts";
-import { ChangeEvent, useMemo } from "react";
+import { ChangeEvent, useCallback, useMemo } from "react";
 
 export interface RangeProps {
   name: string;
@@ -18,13 +18,19 @@ export const Range = ({
   max,
   step = 1,
 }: RangeProps) => {
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setTypedValue(e.target.value);
-  };
+  const setTypedValue = useCallback(
+    (value: string) => {
+      onChange(Number.parseInt(value));
+    },
+    [onChange],
+  );
 
-  const setTypedValue = (value: string) => {
-    onChange(Number.parseInt(value));
-  };
+  const handleChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      setTypedValue(e.target.value);
+    },
+    [setTypedValue],
+  );
 
   const range = useRange(min, max, step);
 

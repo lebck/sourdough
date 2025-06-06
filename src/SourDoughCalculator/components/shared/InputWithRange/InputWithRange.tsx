@@ -14,32 +14,28 @@ type InputWithRangeProps = {
   onChange: (value: number) => void;
 };
 
-const InputWithRange = ({
+export const InputWithRange = ({
   label,
   name,
   rangeOptions,
   value,
   onChange,
-}: InputWithRangeProps) => {
-  return (
-    <div className="mt-6" data-testid={InputWithRange.testIDs.test}>
-      <Label htmlFor={name}>{label}:</Label>
-      <div className="flex flex-col items-center gap-5 sm:flex-row">
-        <InputNumber name={name} onChange={onChange} value={value} />
-        {rangeOptions && (
-          <Range
-            onChange={onChange}
-            value={value}
-            {...rangeOptions}
-            name={name}
-          />
-        )}
-      </div>
+}: InputWithRangeProps) => (
+  <div className="mt-6" data-testid={InputWithRange.testIDs.test}>
+    <Label htmlFor={name}>{label}:</Label>
+    <div className="flex flex-col items-center gap-5 sm:flex-row">
+      <InputNumber name={name} onChange={onChange} value={value} />
+      {rangeOptions && (
+        <Range
+          onChange={onChange}
+          value={value}
+          {...rangeOptions}
+          name={name}
+        />
+      )}
     </div>
-  );
-};
-
-export default InputWithRange;
+  </div>
+);
 
 InputWithRange.testIDs = {
   test: "foo",

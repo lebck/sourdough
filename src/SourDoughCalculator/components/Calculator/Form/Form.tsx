@@ -1,5 +1,5 @@
 import type { BaseParams } from "~/SourDoughCalculator/components/Calculator/types/SourDough";
-import InputWithRange from "~/SourDoughCalculator/components/shared/InputWithRange/InputWithRange.tsx";
+import { InputWithRange } from "~/SourDoughCalculator/components/shared/InputWithRange/InputWithRange.tsx";
 import { Collapse } from "~/SourDoughCalculator/components/shared/Collapse/Collapse.tsx";
 import { useTranslation } from "react-i18next";
 import { useForm } from "~/SourDoughCalculator/components/Calculator/Form/useForm.ts";
