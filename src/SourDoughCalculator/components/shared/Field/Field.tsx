@@ -5,7 +5,7 @@ interface FieldProps {
   onChange: (value: string) => void;
 }
 
-export function Field({ value, label, onChange, name }: FieldProps) {
+export const Field = ({ value, label, onChange, name }: FieldProps) => {
   return (
     <>
       <label htmlFor={name}>{label}</label>
@@ -18,4 +18,4 @@ export function Field({ value, label, onChange, name }: FieldProps) {
       />
     </>
   );
-}
+};

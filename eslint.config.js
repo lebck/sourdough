@@ -24,6 +24,8 @@ export default tseslint.config(
         "warn",
         { allowConstantExport: true },
       ],
+      // Disallow function keyword, enforce arrow functions
+      "func-style": ["error", "expression"],
     },
   },
   eslintPluginPrettierRecommended,

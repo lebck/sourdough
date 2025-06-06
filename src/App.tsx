@@ -1,7 +1,7 @@
 import { SourDoughCalculator } from "./SourDoughCalculator/SourDoughCalculator.tsx";
 
-function App() {
+const App = () => {
   return <SourDoughCalculator />;
-}
+};
 
 export default App;

@@ -35,7 +35,7 @@ const useForm = (
   };
 };
 
-export function Form({ onChange, value }: FormProps) {
+export const Form = ({ onChange, value }: FormProps) => {
   const { t } = useTranslation();
 
   const form = useForm(value, onChange);
@@ -66,4 +66,4 @@ export function Form({ onChange, value }: FormProps) {
       </Collapse>
     </form>
   );
-}
+};

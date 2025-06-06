@@ -4,24 +4,27 @@ import {
   BaseParams,
   calculateDough,
 } from "~/SourDoughCalculator/components/Calculator/types/SourDough";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Ingredients } from "~/SourDoughCalculator/components/Calculator/Ingredients/Ingredients.tsx";
 import { useSourDoughStorage } from "~/SourDoughCalculator/services/SourdoughState.ts";
 import { SaveDough } from "~/SourDoughCalculator/components/Calculator/SaveDough/SaveDough.tsx";
 
-export function Calculator() {
+export const Calculator = () => {
   const { baseParams, setBaseParams, dirty } = useSourDoughStorage();
 
   const [sourDough, setSourDough] = useState<Amounts>(
     calculateDough(baseParams),
   );
 
-  const handleDoughChange = (baseParams: BaseParams) => {
-    setBaseParams(baseParams);
+  const handleDoughChange = useCallback(
+    (baseParams: BaseParams) => {
+      setBaseParams(baseParams);
 
-    baseParams = correctBaseParams(baseParams);
-    setSourDough(calculateDough(baseParams));
-  };
+      baseParams = correctBaseParams(baseParams);
+      setSourDough(calculateDough(baseParams));
+    },
+    [setBaseParams],
+  );
 
   return (
     <>
@@ -30,9 +33,9 @@ export function Calculator() {
       <SaveDough enabled={dirty} />
     </>
   );
-}
+};
 
-function correctBaseParams(baseParams: BaseParams): BaseParams {
+const correctBaseParams = (baseParams: BaseParams): BaseParams => {
   if (
     isNaN(baseParams.amountDoughGrams) ||
     isNaN(baseParams.hydrationPercent) ||
@@ -48,4 +51,4 @@ function correctBaseParams(baseParams: BaseParams): BaseParams {
   }
 
   return baseParams;
-}
+};
