@@ -21,7 +21,7 @@ export const InputWithRange = ({
   value,
   onChange,
 }: InputWithRangeProps) => (
-  <div className="mt-6" data-testid={InputWithRange.testIDs.test}>
+  <div className="mt-6">
     <Label htmlFor={name}>{label}:</Label>
     <div className="flex flex-col items-center gap-5 sm:flex-row">
       <InputNumber name={name} onChange={onChange} value={value} />
@@ -36,7 +36,3 @@ export const InputWithRange = ({
     </div>
   </div>
 );
-
-InputWithRange.testIDs = {
-  test: "foo",
-};

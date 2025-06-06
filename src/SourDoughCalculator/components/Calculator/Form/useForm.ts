@@ -1,5 +1,5 @@
 import { BaseParams } from "~/SourDoughCalculator/components/Calculator/types/SourDough.ts";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 export const useForm = (
   defaultValues: BaseParams,
@@ -7,17 +7,23 @@ export const useForm = (
 ) => {
   const [values, setValues] = useState(defaultValues);
 
-  const updateBaseParam = (key: keyof BaseParams, value: number) => {
-    const newValues = { ...values, [key]: value };
-    setValues(newValues);
-    onChange(newValues);
-  };
+  const updateBaseParam = useCallback(
+    (key: keyof BaseParams, value: number) => {
+      const newValues = { ...values, [key]: value };
+      setValues(newValues);
+      onChange(newValues);
+    },
+    [values, onChange],
+  );
 
-  const createFieldHandler = (fieldName: keyof BaseParams) => ({
-    name: fieldName,
-    value: values[fieldName],
-    onChange: (value: number) => updateBaseParam(fieldName, value),
-  });
+  const createFieldHandler = useCallback(
+    (fieldName: keyof BaseParams) => ({
+      name: fieldName,
+      value: values[fieldName],
+      onChange: (value: number) => updateBaseParam(fieldName, value),
+    }),
+    [values, updateBaseParam],
+  );
 
   return {
     amountDoughGrams: createFieldHandler("amountDoughGrams"),

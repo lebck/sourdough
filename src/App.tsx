@@ -1,7 +1,1 @@
-import { SourDoughCalculator } from "./SourDoughCalculator/SourDoughCalculator.tsx";
-
-const App = () => {
-  return <SourDoughCalculator />;
-};
-
-export default App;
+export { SourDoughCalculator as App } from "./SourDoughCalculator/SourDoughCalculator.tsx";

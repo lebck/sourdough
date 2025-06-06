@@ -11,19 +11,3 @@ export interface Amounts {
   amountStarterGrams: number;
   amountSaltGrams: number;
 }
-
-export const calculateDough = (baseParams: BaseParams): Amounts => {
-  const amountWaterGrams =
-    baseParams.amountDoughGrams * (baseParams.hydrationPercent / 100);
-  const amountStarterGrams =
-    baseParams.amountDoughGrams * (baseParams.amountStarterPercent / 100);
-  const amountSaltGrams =
-    baseParams.amountDoughGrams * (baseParams.amountSaltPercent / 100);
-
-  return {
-    amountDoughGrams: baseParams.amountDoughGrams,
-    amountWaterGrams,
-    amountStarterGrams,
-    amountSaltGrams,
-  };
-};
