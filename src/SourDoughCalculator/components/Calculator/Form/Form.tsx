@@ -1,39 +1,13 @@
-import { useState } from "react";
 import type { BaseParams } from "~/SourDoughCalculator/components/Calculator/types/SourDough";
 import InputWithRange from "~/SourDoughCalculator/components/shared/InputWithRange/InputWithRange.tsx";
 import { Collapse } from "~/SourDoughCalculator/components/shared/Collapse/Collapse.tsx";
 import { useTranslation } from "react-i18next";
+import { useForm } from "~/SourDoughCalculator/components/Calculator/Form/useForm.ts";
 
 interface FormProps {
   onChange: (data: BaseParams) => void;
   value: BaseParams;
 }
-
-const useForm = (
-  defaultValues: BaseParams,
-  onChange: (params: BaseParams) => void,
-) => {
-  const [values, setValues] = useState(defaultValues);
-
-  const updateBaseParam = (key: keyof BaseParams, value: number) => {
-    const newValues = { ...values, [key]: value };
-    setValues(newValues);
-    onChange(newValues);
-  };
-
-  const createFieldHandler = (fieldName: keyof BaseParams) => ({
-    name: fieldName,
-    value: values[fieldName],
-    onChange: (value: number) => updateBaseParam(fieldName, value),
-  });
-
-  return {
-    amountDoughGrams: createFieldHandler("amountDoughGrams"),
-    hydrationPercent: createFieldHandler("hydrationPercent"),
-    amountSaltPercent: createFieldHandler("amountSaltPercent"),
-    amountStarterPercent: createFieldHandler("amountStarterPercent"),
-  };
-};
 
 export const Form = ({ onChange, value }: FormProps) => {
   const { t } = useTranslation();
